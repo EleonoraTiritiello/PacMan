@@ -43,8 +43,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f7f39a5cb4847f41b54a70bc8835b08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PacMan: {fileID: 0}
-  UI: {fileID: 0}
   ActualScore: 0
   ScoreToWin: 2000
-  ActualLife: {fileID: 0}
+  ActualPlayer: {fileID: 0}
+  PacMan: {fileID: 0}
+  UI: {fileID: 0}

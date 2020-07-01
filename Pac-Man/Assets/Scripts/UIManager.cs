@@ -17,8 +17,8 @@ public class UIManager : MonoBehaviour
         GameManager = FindObjectOfType<GameManager>();
         Score.text = TextScore + GameManager.ActualScore;
     }
-
-    public void Start()
+   
+    private void Start()
     {
         SetCurrentPlayerLife();
     }
