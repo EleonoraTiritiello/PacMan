@@ -6,17 +6,30 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public int speed;
+    public Camera cam;
+    public int Life;
+    public GameManager GM;
+    public bool ReciveDamage;
+    public float time;
+    public Rigidbody RB;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        ReciveDamage = true;
+        cam = FindObjectOfType<Camera>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        Movement();   
+        Movement();
+        CrossScreen();
+
+        if (ReciveDamage == false)
+        {
+            RecordTime();
+        }
     }
 
     void Movement()
@@ -40,5 +53,73 @@ public class Player : MonoBehaviour
         {
             transform.Translate(Vector3.right * speed * Time.deltaTime);
         } 
+    }
+
+    void CrossScreen()
+    {
+
+        Vector3 screenPoint = cam.WorldToViewportPoint(transform.position);
+
+        //if out of the screen, teleport to the other side
+
+        if (screenPoint.x > 1)
+        {
+            transform.position = cam.ViewportToWorldPoint(new Vector3(0, screenPoint.y, screenPoint.z));
+        }
+        else if (screenPoint.x < 0)
+        {
+            transform.position = cam.ViewportToWorldPoint(new Vector3(1, screenPoint.y, screenPoint.z));
+        }
+    }
+
+
+    private void OnCollisionEnter(Collision collision)
+    {
+
+        if (collision.gameObject.GetComponent<EnemyManager>())
+        {
+            if (CheckTime(2.0f) && !ReciveDamage)
+            {
+                ReciveDamage = true;
+                ResetTime();
+            }
+            if (ReciveDamage)
+            {
+                if (Life <= 1)
+                {
+                    Life -= 1;
+                    GM.UI.SetCurrentPlayerLife();
+                    GM.UI.ActiveUI();
+                    Destroy(this.gameObject);
+
+                }
+                else
+                {
+                    Life -= 1;
+                    ReciveDamage = false;
+                    transform.position = new Vector3(0, -19f, 0);
+                    GM.UI.SetCurrentPlayerLife();
+                    GM.UI.ActiveUI();
+                }
+            }
+
+        }
+    }
+
+    private void RecordTime()
+    {
+        time += Time.deltaTime;
+    }
+
+    private void ResetTime()
+    {
+        time = 0.0f;
+    }
+
+    private bool CheckTime(float valueToCheck)
+    {
+        if (time >= valueToCheck)
+            return true;
+        else return false;
     }
 }
