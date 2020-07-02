@@ -5,5 +5,23 @@ using UnityEngine.AI;
 
 public class InkyEnemy : MonoBehaviour
 {
+    [SerializeField]
+    Transform destination;
+
+    NavMeshAgent navMeshA;
+
+    void Start()
+    {
+        navMeshA = this.GetComponent<NavMeshAgent>();
+    }
+
+    void Update()
+    {
+        if (destination != null)
+        {
+            Vector3 targetVector = destination.transform.position;
+            navMeshA.SetDestination(targetVector);
+        }
+    }
 
 }

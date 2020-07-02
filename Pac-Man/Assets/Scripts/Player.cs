@@ -12,7 +12,7 @@ public class Player : MonoBehaviour
     public bool ReciveDamage;
     public float time;
     public Rigidbody RB;
-    private Vector3 directionToMove;
+    //private Vector3 directionToMove;
 
     // Start is called before the first frame update
     void Start()
@@ -37,7 +37,7 @@ public class Player : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.W))
         {
-            directionToMove = Vector3.up;
+            transform.Translate(Vector3.up * speed * Time.deltaTime);
         } 
         
         if (Input.GetKey(KeyCode.S))
@@ -54,7 +54,7 @@ public class Player : MonoBehaviour
         {
             transform.Translate(Vector3.right * speed * Time.deltaTime);
         } 
-            transform.Translate(directionToMove * speed * Time.deltaTime);
+          
     }
 
     
@@ -101,7 +101,7 @@ public class Player : MonoBehaviour
                 {
                     Life -= 1;
                     ReciveDamage = false;
-                    transform.position = new Vector3(0, -19f, 0);
+                    transform.position = new Vector3(0, -4f, -7.5f);
                     GM.UI.SetCurrentPlayerLife();
                     GM.UI.ActiveUI();
                 }

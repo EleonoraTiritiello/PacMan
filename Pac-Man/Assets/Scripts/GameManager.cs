@@ -38,7 +38,7 @@ public class GameManager : MonoBehaviour
     {
         if (ActualScore >= ScoreToWin)
         {
-            Object.FindObjectOfType<Player>().gameObject.transform.position = new Vector3(0, -19f, 0);
+            Object.FindObjectOfType<Player>().gameObject.transform.position = new Vector3(0, -4f, -7.5f);
             ActualScore = 0;
             EndMenu();
         }
