@@ -5,6 +5,11 @@ TagManager:
   serializedVersion: 2
   tags:
   - Limit
+  - InkyEnemy
+  - BlinkyEnemy
+  - PinkyEnemy
+  - ClydeEnemy
+  - Pacman
   layers:
   - Default
   - TransparentFX

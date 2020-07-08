@@ -10,7 +10,13 @@ public class GameManager : MonoBehaviour
     public Player ActualPlayer;
     public GameObject PacMan;
     public UIManager UI;
+    public GameObject pallinaPrefab;
 
+    void Start()
+    {
+      
+        Instantiate(pallinaPrefab, new Vector3(-4f, -4f, -18.73f), Quaternion.identity);
+    }
 
     private void Update()
     {

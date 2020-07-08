@@ -12,7 +12,8 @@ public class Player : MonoBehaviour
     public bool ReciveDamage;
     public float time;
     public Rigidbody RB;
-    //private Vector3 directionToMove;
+    private Vector3 directionToMove;
+    public float rotationSpeed = 100.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -24,37 +25,51 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Movement();
+       Movement();
         CrossScreen();
 
         if (ReciveDamage == false)
         {
             RecordTime();
         }
+
+      // float translation = Input.GetAxis("Vertical") * speed;
+      //
+      // translation *= Time.deltaTime;
+      //
+      // transform.Translate(0, 0, translation);
+      //
+      // float rotation = Input.GetAxis("Horizontal") * rotationSpeed;
+      //
+      // rotation *= Time.deltaTime;
+      //
+      // transform.Rotate(0, rotation, 0);
+
     }
 
     void Movement()
     {
-        if (Input.GetKey(KeyCode.W))
+        if (Input.GetKey(KeyCode.UpArrow))
         {
-            transform.Translate(Vector3.up * speed * Time.deltaTime);
+            transform.Translate(Vector3.forward * speed * Time.deltaTime);
         } 
         
-        if (Input.GetKey(KeyCode.S))
+        if (Input.GetKey(KeyCode.DownArrow))
         {
-            transform.Translate(Vector3.down * speed * Time.deltaTime);
+            transform.Translate(Vector3.back * speed * Time.deltaTime);
         } 
         
-        if (Input.GetKey(KeyCode.A))
+        if (Input.GetKey(KeyCode.LeftArrow))
         {
             transform.Translate(Vector3.left * speed * Time.deltaTime);
         } 
         
-        if (Input.GetKey(KeyCode.D))
+        if (Input.GetKey(KeyCode.RightArrow))
         {
             transform.Translate(Vector3.right * speed * Time.deltaTime);
         } 
           
+          //  transform.Translate(Vector3.up * speed * Time.deltaTime);
     }
 
     
