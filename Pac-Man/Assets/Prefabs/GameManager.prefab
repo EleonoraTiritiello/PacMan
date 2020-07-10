@@ -48,3 +48,4 @@ MonoBehaviour:
   ActualPlayer: {fileID: 0}
   PacMan: {fileID: 0}
   UI: {fileID: 0}
+  ballsPrefab: {fileID: 0}

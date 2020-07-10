@@ -10,12 +10,13 @@ public class GameManager : MonoBehaviour
     public Player ActualPlayer;
     public GameObject PacMan;
     public UIManager UI;
-    public GameObject pallinaPrefab;
+    public GameObject ballsPrefab;
+    GameObject[] balls;
 
     void Start()
     {
       
-        Instantiate(pallinaPrefab, new Vector3(-4f, -4f, -18.73f), Quaternion.identity);
+        //Instantiate(ballsPrefab, new Vector3(-4f, -4f, -18.73f), Quaternion.identity);
     }
 
     private void Update()
@@ -44,6 +45,7 @@ public class GameManager : MonoBehaviour
     {
         if (ActualScore >= ScoreToWin)
         {
+
             Object.FindObjectOfType<Player>().gameObject.transform.position = new Vector3(0, -4f, -7.5f);
             ActualScore = 0;
             EndMenu();
@@ -56,4 +58,15 @@ public class GameManager : MonoBehaviour
         // EndMenu();
         
     }
+
+    public void SpawnBalls()
+    {
+        for (int i = 0; i < 8; i++)
+        {
+            balls[i] = GameObject.Instantiate(ballsPrefab);
+            balls[i].gameObject.transform.position = new Vector3(Random.Range(-4, 10), -18.73f, Random.Range(-4, 10));
+
+        }
+    }
+
 }
