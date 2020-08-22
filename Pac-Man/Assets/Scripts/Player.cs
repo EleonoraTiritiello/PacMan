@@ -11,7 +11,7 @@ public class Player : MonoBehaviour
     public GameManager GM;
     public bool ReciveDamage;
     public float time;
-    public Rigidbody RB;
+    public Rigidbody rB;
     private Vector3 directionToMove;
     public float rotationSpeed = 100.0f;
 
@@ -33,6 +33,9 @@ public class Player : MonoBehaviour
             RecordTime();
         }
 
+        rB = GetComponent<Rigidbody>();
+
+
       // float translation = Input.GetAxis("Vertical") * speed;
       //
       // translation *= Time.deltaTime;
@@ -49,7 +52,30 @@ public class Player : MonoBehaviour
 
     void Movement()
     {
-        if (Input.GetKey(KeyCode.UpArrow))
+        if(Input.GetAxis("Horizontal") < 0)
+        {
+            directionToMove = Vector3.left;
+        }
+
+        if (Input.GetAxis("Horizontal") > 0)
+        {      
+            directionToMove = Vector3.right;
+        }
+
+        if (Input.GetAxis("Vertical") < 0)
+        {           
+            directionToMove = Vector3.back;
+        }
+
+        if (Input.GetAxis("Vertical") > 0)
+        {       
+            directionToMove = Vector3.forward;
+        }
+
+        rB.velocity = directionToMove * speed;
+        transform.up = directionToMove;
+
+       /* if (Input.GetKey(KeyCode.UpArrow))
         {
             transform.Translate(Vector3.forward * speed * Time.deltaTime);
         } 
@@ -67,7 +93,7 @@ public class Player : MonoBehaviour
         if (Input.GetKey(KeyCode.RightArrow))
         {
             transform.Translate(Vector3.right * speed * Time.deltaTime);
-        } 
+        } */
           
           //  transform.Translate(Vector3.up * speed * Time.deltaTime);
     }

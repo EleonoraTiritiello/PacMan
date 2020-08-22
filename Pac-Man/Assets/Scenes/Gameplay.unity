@@ -911,6 +911,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 5351206282385772123}
   m_PrefabAsset: {fileID: 0}
+--- !u!54 &1579134946 stripped
+Rigidbody:
+  m_CorrespondingSourceObject: {fileID: 1363418890, guid: 5745a7e6703ed834aa10b0e66c18a3df,
+    type: 3}
+  m_PrefabInstance: {fileID: 5351206282385772123}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1633574582
 GameObject:
   m_ObjectHideFlags: 0
@@ -2099,6 +2105,10 @@ PrefabInstance:
       propertyPath: GM
       value: 
       objectReference: {fileID: 774653600}
+    - target: {fileID: 1363418889, guid: 5745a7e6703ed834aa10b0e66c18a3df, type: 3}
+      propertyPath: rB
+      value: 
+      objectReference: {fileID: 1579134946}
     - target: {fileID: 1641399330483183538, guid: 5745a7e6703ed834aa10b0e66c18a3df,
         type: 3}
       propertyPath: m_LocalPosition.x

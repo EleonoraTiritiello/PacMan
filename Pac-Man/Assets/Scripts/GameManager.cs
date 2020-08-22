@@ -61,10 +61,10 @@ public class GameManager : MonoBehaviour
 
     public void SpawnBalls()
     {
-        for (int i = 0; i < 8; i++)
+        for (int i = 0; i < 20; i++)
         {
             balls[i] = GameObject.Instantiate(ballsPrefab);
-            balls[i].gameObject.transform.position = new Vector3(Random.Range(-4, 10), -18.73f, Random.Range(-4, 10));
+            balls[i].gameObject.transform.position = new Vector3(Random.Range(-10, 10), 0f, Random.Range(-10, 10));
 
         }
     }
