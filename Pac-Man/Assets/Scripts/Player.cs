@@ -2,7 +2,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Net;
-using UnityEditorInternal;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -18,8 +17,8 @@ public class Player : MonoBehaviour
     private Vector3 directionToMove;
     private AudioSource source;
     public bool loop;
-    EnemyManager EM;
-    Energyball EB;
+    public EnemyManager EM;
+    public Energyball EB;
     public UIManager UI;
     Renderer rend;
     public Material[] material;

@@ -3014,6 +3014,14 @@ PrefabInstance:
       propertyPath: ReciveDamage
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1363418889, guid: 5745a7e6703ed834aa10b0e66c18a3df, type: 3}
+      propertyPath: EM
+      value: 
+      objectReference: {fileID: 2037965851}
+    - target: {fileID: 1363418889, guid: 5745a7e6703ed834aa10b0e66c18a3df, type: 3}
+      propertyPath: EB
+      value: 
+      objectReference: {fileID: 505482866}
     - target: {fileID: 1641399330483183538, guid: 5745a7e6703ed834aa10b0e66c18a3df,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3078,11 +3086,31 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3032302057508710335, guid: 9963fe8097d09394c84ac725f156c75c,
+    - target: {fileID: 5429375930215910377, guid: 9963fe8097d09394c84ac725f156c75c,
         type: 3}
-      propertyPath: m_Name
-      value: Balls
-      objectReference: {fileID: 0}
+      propertyPath: ActualPlayer
+      value: 
+      objectReference: {fileID: 220810038}
+    - target: {fileID: 5429375930215910377, guid: 9963fe8097d09394c84ac725f156c75c,
+        type: 3}
+      propertyPath: PacMan
+      value: 
+      objectReference: {fileID: 81555179}
+    - target: {fileID: 5429375930215910377, guid: 9963fe8097d09394c84ac725f156c75c,
+        type: 3}
+      propertyPath: UI
+      value: 
+      objectReference: {fileID: 1081176450}
+    - target: {fileID: 5429375930215910377, guid: 9963fe8097d09394c84ac725f156c75c,
+        type: 3}
+      propertyPath: GM
+      value: 
+      objectReference: {fileID: 774653600}
+    - target: {fileID: 5429375930215910377, guid: 9963fe8097d09394c84ac725f156c75c,
+        type: 3}
+      propertyPath: PM
+      value: 
+      objectReference: {fileID: 220810038}
     - target: {fileID: 5584336199185122838, guid: 9963fe8097d09394c84ac725f156c75c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3138,31 +3166,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5429375930215910377, guid: 9963fe8097d09394c84ac725f156c75c,
+    - target: {fileID: 3032302057508710335, guid: 9963fe8097d09394c84ac725f156c75c,
         type: 3}
-      propertyPath: ActualPlayer
-      value: 
-      objectReference: {fileID: 220810038}
-    - target: {fileID: 5429375930215910377, guid: 9963fe8097d09394c84ac725f156c75c,
-        type: 3}
-      propertyPath: PacMan
-      value: 
-      objectReference: {fileID: 81555179}
-    - target: {fileID: 5429375930215910377, guid: 9963fe8097d09394c84ac725f156c75c,
-        type: 3}
-      propertyPath: UI
-      value: 
-      objectReference: {fileID: 1081176450}
-    - target: {fileID: 5429375930215910377, guid: 9963fe8097d09394c84ac725f156c75c,
-        type: 3}
-      propertyPath: GM
-      value: 
-      objectReference: {fileID: 774653600}
-    - target: {fileID: 5429375930215910377, guid: 9963fe8097d09394c84ac725f156c75c,
-        type: 3}
-      propertyPath: PM
-      value: 
-      objectReference: {fileID: 220810038}
+      propertyPath: m_Name
+      value: Balls
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9963fe8097d09394c84ac725f156c75c, type: 3}
 --- !u!135 &5960800793258522936
