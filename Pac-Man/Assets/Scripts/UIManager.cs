@@ -5,23 +5,44 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
+    #region VARIABLES
     public string TextScore = "Score";
     public Text Score;
     public Transform LifeToSpawn;
     GameManager GameManager;
     public GameObject lifePrefab1, lifePrefab2, lifePrefab3;
     int playerLife;
+    //public int score_;
+    //public int highscore;
+    //
+    //Text text;
+    #endregion
 
-    private void Awake()
+    public void Awake()
     {
         GameManager = FindObjectOfType<GameManager>();
         Score.text = TextScore + GameManager.ActualScore;
     }
-   
-    private void Start()
+
+    public void Start()
     {
         SetCurrentPlayerLife();
+
+      //text = GetComponent<Text>();
+      //
+      //score_ = 0;
+      //
+      //highscore = PlayerPrefs.GetInt("highscore", highscore);
     }
+
+   /*public void Update()
+    {
+        if (score_ > highscore)
+            highscore = score_;
+        text.text = "" + score_;
+
+        PlayerPrefs.SetInt("highscore", highscore);
+    }*/
 
     public void ActiveUI()
     {
@@ -60,4 +81,15 @@ public class UIManager : MonoBehaviour
     {
         Score.text = TextScore + GameManager.ActualScore;
     }
-}
+
+  //  public void AddPoints(int pointsToAdd)
+  //  {
+  //      score_ += pointsToAdd;
+  //  }
+  //
+  //  public void Reset()
+  //  {
+  //      score_ = 0;
+  //  }
+} 
+

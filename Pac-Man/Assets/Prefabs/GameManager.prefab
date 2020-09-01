@@ -44,8 +44,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ActualScore: 0
-  ScoreToWin: 2000
+  ScoreToWin: 20000
   ActualPlayer: {fileID: 0}
-  PacMan: {fileID: 0}
+  PacMan: {fileID: 7474941400174655499, guid: 5745a7e6703ed834aa10b0e66c18a3df, type: 3}
   UI: {fileID: 0}
   ballsPrefab: {fileID: 0}

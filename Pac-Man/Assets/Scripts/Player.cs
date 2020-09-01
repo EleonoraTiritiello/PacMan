@@ -1,10 +1,13 @@
-﻿using System.Collections;
+﻿using JetBrains.Annotations;
+using System.Collections;
 using System.Collections.Generic;
 using System.Net;
+using UnityEditorInternal;
 using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    #region VARIABLES
     public int speed;
     public Camera cam;
     public int Life;
@@ -13,19 +16,58 @@ public class Player : MonoBehaviour
     public float time;
     public Rigidbody rB;
     private Vector3 directionToMove;
-    public float rotationSpeed = 100.0f;
+    private AudioSource source;
+    public bool loop;
+    EnemyManager EM;
+    Energyball EB;
+    public UIManager UI;
+    Renderer rend;
+    public Material[] material;
+    [HideInInspector]
+    public float currentTime;
+    public float timeMax;
+    public bool active;
+    public bool timeStopped;
+    #endregion
 
     // Start is called before the first frame update
     void Start()
     {
         ReciveDamage = true;
-        cam = FindObjectOfType<Camera>();
+        cam = Camera.FindObjectOfType<Camera>();
+        EM = EnemyManager.FindObjectOfType<EnemyManager>();
+        EB = Energyball.FindObjectOfType<Energyball>();
+        UI = UIManager.FindObjectOfType<UIManager>();
+
+        rend = GetComponent<Renderer>();
+        rend.enabled = true;
+        rend.sharedMaterial = material[0];
+        timeStopped = false;
+
+    }
+    public void SetSource(AudioSource _source)
+    {
+        source = _source;
+        source.loop = this.loop;
+    }
+    public void PlayAudio()
+    {
+        source.Play();
+    }
+    public void StopAudio()
+    {
+        source.Stop();
+    }
+
+    public void SetLoop(bool loop)
+    {
+        source.loop = loop;
     }
 
     // Update is called once per frame
     void Update()
     {
-       Movement();
+        Movement();
         CrossScreen();
 
         if (ReciveDamage == false)
@@ -115,13 +157,25 @@ public class Player : MonoBehaviour
         {
             transform.position = cam.ViewportToWorldPoint(new Vector3(1, screenPoint.y, screenPoint.z));
         }
+        else if (screenPoint.y > 1)
+        {
+            transform.position = cam.ViewportToWorldPoint(new Vector3(screenPoint.x, 0, screenPoint.z));
+        }
+        else if (screenPoint.y < 0)
+        {
+            transform.position = cam.ViewportToWorldPoint(new Vector3(screenPoint.x, 1, screenPoint.z));
+        }
     }
 
+    void Die()
+    {
+       // AudioSource.PlayClipAtPoint.PlayAudio;
+    }
 
     private void OnCollisionEnter(Collision collision)
     {
 
-        if (collision.gameObject.GetComponent<EnemyManager>())
+        if (collision.gameObject.GetComponent<InkyEnemy>())
         {
             if (CheckTime(2.0f) && !ReciveDamage)
             {
@@ -136,6 +190,7 @@ public class Player : MonoBehaviour
                     GM.UI.SetCurrentPlayerLife();
                     GM.UI.ActiveUI();
                     Destroy(this.gameObject);
+                  
 
                 }
                 else
@@ -148,7 +203,42 @@ public class Player : MonoBehaviour
                 }
             }
 
+            if (collision.gameObject.tag == "PacMan")
+            {
+                rend.sharedMaterial = material[0];
+
+                GM.ActualScore += 20;
+                UI.UpdateScore();
+                Destroy(this.gameObject);
+            }
+            else
+            {
+                Timer();
+                rend.sharedMaterial = material[0];
+            }
+
+
         }
+    }
+
+
+    void Timer()
+    {
+        if (currentTime > 0)
+        {
+            currentTime -= 1 * Time.deltaTime;
+        }
+        else
+        {
+            currentTime = 0;
+            active = false;
+        }
+    }
+
+
+    public void Destroy()
+    {
+        Destroy(gameObject);
     }
 
     private void RecordTime()
@@ -167,4 +257,5 @@ public class Player : MonoBehaviour
             return true;
         else return false;
     }
+
 }
